@@ -6,7 +6,7 @@ build, pensata per Netlify. Avviato il 2026-10-27.
 
 ## Struttura
 
-- `sito/` — il sito pubblicabile (`publish = "."` in `netlify.toml`)
+- `sito/` — il sito pubblicabile (`publish = "sito"` in `netlify.toml`, nella root)
 - `materiali/` — gitignored: i due export Lovable, gli screenshot e le foto
   originali che Odoardo ha mandato
 
