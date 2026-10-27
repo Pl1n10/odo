@@ -162,6 +162,7 @@ a { color: inherit; }
   line-height: 1.02;
   letter-spacing: -0.028em;
   max-width: 14ch;
+  text-wrap: pretty;
 }
 .apertura__sotto {
   margin-top: 1.75rem;
