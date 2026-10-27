@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1600" role="img" aria-labelledby="title description">
+  <title id="title">ODOARDO - Logo V1</title>
+  <desc id="description">Simbolo ODOARDO: cerchio verde acqua con apertura netta leggermente spostata verso destra.</desc>
+  <g fill="none" shape-rendering="geometricPrecision">
+    <path
+      d="M 1100.91 400.68 A 500 500 0 1 1 962.78 327.24"
+      stroke="#46C2AF"
+      stroke-width="64"
+      stroke-linecap="butt"
+    />
+  </g>
+</svg>

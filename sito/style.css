@@ -1,0 +1,383 @@
+@font-face {
+  font-family: "Red Hat Display";
+  src: url("fonts/redhat-display.woff2") format("woff2");
+  font-weight: 500 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Red Hat Text";
+  src: url("fonts/redhat-text.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+:root {
+  /* Il verde acqua di Odoardo è una superficie, mai un colore per il testo:
+     su fondo chiaro arriva a 2:1 e non si legge. */
+  --acqua: #46c2af;
+  --inchiostro: #0d2b27;
+  --inchiostro-2: #1f4943;   /* testo secondario sul verde, 4.6:1 */
+  --carta: #f2f7f6;
+  --disco: #e6f3f0;
+  --profondo: #1d6f64;       /* link su carta, 5.5:1 */
+  --grigio: #3e5753;         /* testo secondario su carta, 7.2:1 */
+  --linea: #cfe2de;
+
+  --display: "Red Hat Display", system-ui, sans-serif;
+  --testo: "Red Hat Text", system-ui, sans-serif;
+
+  --wrap: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --sezione: clamp(4.5rem, 10vw, 8.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: var(--testo);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+h2 { font-size: clamp(2rem, 2.6vw + 1.1rem, 3.1rem); font-weight: 800; }
+h3 { font-size: 1.375rem; font-weight: 700; }
+p { margin: 0; text-wrap: pretty; }
+
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--inchiostro); outline-offset: 3px; border-radius: 2px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.skip {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  background: var(--inchiostro); color: var(--carta);
+  padding: .6rem 1rem; border-radius: 999px; text-decoration: none;
+}
+.skip:focus { top: 1rem; }
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--wrap) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Bottoni e link ------------------------------------------------------- */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3.25rem;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  transition: background-color .2s, color .2s;
+}
+.btn--inchiostro { background: var(--inchiostro); color: var(--carta); }
+.btn--inchiostro:hover { background: #18423c; }
+.btn--contorno { box-shadow: inset 0 0 0 2px var(--inchiostro); color: var(--inchiostro); }
+.btn--contorno:hover { background: var(--inchiostro); color: var(--acqua); }
+.btn--piccolo { min-height: 2.5rem; padding: .45rem 1.1rem; font-size: .9375rem; }
+
+.link-forte {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .25em;
+}
+.link-forte:hover { text-decoration-thickness: 3px; }
+
+.azioni {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+/* Testata -------------------------------------------------------------- */
+
+.testata {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--acqua);
+  transition: box-shadow .2s;
+}
+.testata.is-staccata { box-shadow: 0 1px 0 rgb(13 43 39 / .18); }
+.testata__riga {
+  display: flex; align-items: center; gap: 1.5rem;
+  min-height: 4.25rem;
+}
+.marchio {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-family: var(--display); font-weight: 800; font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.marchio__segno { width: 1.7rem; height: 1.7rem; color: var(--inchiostro); }
+.marchio--chiaro .marchio__segno { color: var(--acqua); }
+.testata__nav { display: flex; gap: 1.75rem; margin-left: auto; font-weight: 600; font-size: .9375rem; }
+.testata__nav a { text-decoration: none; }
+.testata__nav a:hover { text-decoration: underline; text-underline-offset: .3em; }
+
+@media (max-width: 720px) {
+  .testata__nav { display: none; }
+  .testata .btn { margin-left: auto; }
+}
+@media (max-width: 380px) {
+  .marchio > span { font-size: 1rem; }
+  .testata .btn { padding-inline: .9rem; font-size: .875rem; }
+}
+
+/* Apertura ------------------------------------------------------------- */
+
+.apertura {
+  background: var(--acqua);
+  overflow: hidden;
+}
+.apertura__griglia {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(3rem, 7vw, 6rem) clamp(3.5rem, 8vw, 7rem);
+}
+.apertura h1 {
+  font-size: clamp(2.35rem, 4.6vw + .9rem, 5rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  max-width: 14ch;
+}
+.apertura__sotto {
+  margin-top: 1.75rem;
+  max-width: 34rem;
+  font-size: clamp(1.125rem, .5vw + 1rem, 1.3125rem);
+  line-height: 1.5;
+}
+.apertura .azioni { margin-top: 2.25rem; }
+.apertura__nota {
+  margin-top: 1.25rem;
+  max-width: 30rem;
+  color: var(--inchiostro-2);
+  font-size: .9375rem;
+}
+
+/* Il ritratto: disco chiaro, foto che esce dal cerchio verso l'alto,
+   anello del logo intorno. Tutte le misure sono in % del lato del riquadro. */
+.ritratto {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  max-width: 30rem;
+  aspect-ratio: 1;
+  justify-self: end;
+  container-type: inline-size;
+}
+.ritratto__disco {
+  position: absolute;
+  left: 13%; top: 17%; width: 74%; aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--disco);
+}
+.ritratto__anello {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+}
+.ritratto__anello path {
+  fill: none;
+  stroke: var(--inchiostro);
+  stroke-width: 44;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.ritratto__foto {
+  position: absolute;
+  left: 4%; width: 92%; height: auto;
+  bottom: 9%;
+  /* Visibile: tutto ciò che sta sopra il centro del disco, più il disco stesso */
+  -webkit-mask:
+    linear-gradient(#000 0 0) top / 100% 60.5% no-repeat,
+    radial-gradient(circle at 50% 60.5%, #000 0 37cqw, transparent calc(37cqw + 1px));
+  mask:
+    linear-gradient(#000 0 0) top / 100% 60.5% no-repeat,
+    radial-gradient(circle at 50% 60.5%, #000 0 37cqw, transparent calc(37cqw + 1px));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .ritratto__anello path {
+    stroke-dashoffset: 1;
+    animation: disegna 1.4s cubic-bezier(.65, 0, .35, 1) .25s forwards;
+  }
+}
+@keyframes disegna { to { stroke-dashoffset: 0; } }
+
+@media (max-width: 860px) {
+  .apertura__griglia { grid-template-columns: 1fr; }
+  .ritratto { justify-self: start; max-width: min(24rem, 86vw); margin-top: .5rem; }
+}
+
+/* Sezioni su carta ----------------------------------------------------- */
+
+.sezione { padding-block: var(--sezione); }
+.sezione + .sezione { border-top: 1px solid var(--linea); }
+.sezione__intro { margin-top: 1.25rem; max-width: 26rem; color: var(--grigio); font-size: 1.125rem; }
+
+.due-colonne {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 6rem);
+}
+@media (max-width: 860px) { .due-colonne { grid-template-columns: 1fr; } }
+
+.segnali { list-style: none; margin: 0; padding: 0; }
+.segnali li {
+  position: relative;
+  padding: 1.35rem 0 1.35rem 2.75rem;
+  border-bottom: 1px solid var(--linea);
+  font-size: clamp(1.0625rem, .4vw + 1rem, 1.25rem);
+  line-height: 1.5;
+  max-width: 38rem;
+}
+.segnali li:first-child { border-top: 1px solid var(--linea); }
+/* Il punto elenco è il segno del logo in piccolo */
+.segnali li::before {
+  content: "";
+  position: absolute; left: 0; top: 1.62rem;
+  width: 1.3rem; height: 1.3rem;
+  background: var(--profondo);
+  -webkit-mask: url("img/segno.svg") center / contain no-repeat;
+  mask: url("img/segno.svg") center / contain no-repeat;
+}
+
+/* Fascia verde: metodo e contatti -------------------------------------- */
+
+.fascia {
+  background: var(--acqua);
+  padding-block: var(--sezione);
+  position: relative;
+  overflow: hidden;
+}
+
+.fasi {
+  list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(2rem, 4vw, 3.5rem);
+}
+@media (max-width: 860px) {
+  .fasi { grid-template-columns: 1fr; }
+  .fase + .fase { margin-top: 3rem; }
+}
+
+/* Subgrid: le righe "Cosa ricevi" restano allineate anche se i testi sopra hanno lunghezze diverse */
+.fase { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+.fase__segno { width: 4.25rem; height: 4.25rem; margin-bottom: 1.5rem; }
+.fase__segno path, .fase__segno circle { fill: none; stroke-width: 110; }
+.fase__segno path { stroke: var(--inchiostro); }
+.fase__segno .traccia { stroke: rgb(13 43 39 / .16); }
+.fase h3 { font-size: 1.75rem; font-weight: 800; }
+.fase p { margin-top: .85rem; max-width: 32ch; }
+.fase__ricevi {
+  align-self: start;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--inchiostro);
+  font-weight: 600;
+}
+.fase > p:not(.fase__ricevi) { margin-bottom: 1.75rem; }
+.fase__ricevi span { display: block; font-weight: 400; color: var(--inchiostro-2); font-size: .9375rem; }
+
+/* Dichiarazione --------------------------------------------------------- */
+
+.sezione--dichiarazione { padding-block: clamp(4rem, 9vw, 7.5rem); }
+.dichiarazione {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.2vw + 1rem, 2.75rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  max-width: 28ch;
+}
+
+/* Percorsi ------------------------------------------------------------- */
+
+.percorsi {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 2px solid var(--inchiostro);
+}
+.percorso { padding: 2rem clamp(0rem, 3vw, 3rem) 0 0; }
+.percorso + .percorso { padding-left: clamp(1.5rem, 3vw, 3rem); border-left: 1px solid var(--linea); }
+.percorso h3 { font-size: 1.75rem; font-weight: 800; }
+.percorso dl { margin: 1.5rem 0 0; max-width: 30rem; }
+.percorso dt { margin-top: 1.1rem; color: var(--grigio); font-size: .9375rem; }
+.percorso dd { margin: .2rem 0 0; }
+.percorsi__chiusa { margin-top: 3rem; font-size: 1.125rem; }
+.percorsi__chiusa .link-forte { color: var(--profondo); }
+
+@media (max-width: 760px) {
+  .percorsi { grid-template-columns: 1fr; }
+  .percorso { padding-right: 0; }
+  .percorso + .percorso { padding-left: 0; border-left: 0; margin-top: 2.5rem; border-top: 1px solid var(--linea); }
+}
+
+/* Chi sono ------------------------------------------------------------- */
+
+.chi {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+.chi__foto { width: 100%; height: auto; border-radius: 4px; }
+.chi__testo p { margin-top: 1.1rem; max-width: 36rem; font-size: 1.125rem; line-height: 1.65; }
+.chi__testo h2 + p { margin-top: 1.75rem; }
+.chi__testo .link-forte { display: inline-block; margin-top: 1.75rem; color: var(--profondo); }
+
+@media (max-width: 860px) {
+  .chi { grid-template-columns: 1fr; }
+  .chi__foto { max-width: 26rem; }
+}
+
+/* Contatti ------------------------------------------------------------- */
+
+.contatti { position: relative; }
+.contatti h2 { font-size: clamp(2.4rem, 4vw + 1rem, 4.5rem); max-width: 12ch; }
+.contatti p { margin-top: 1.5rem; max-width: 34rem; font-size: 1.1875rem; }
+.contatti .azioni { margin-top: 2.25rem; }
+.contatti__anello {
+  position: absolute;
+  width: clamp(22rem, 48vw, 40rem); height: clamp(22rem, 48vw, 40rem);
+  right: clamp(-14rem, -10vw, -6rem); top: 50%;
+  translate: 0 -50%;
+  color: rgb(13 43 39 / .12);
+  pointer-events: none;
+}
+
+/* Piede ---------------------------------------------------------------- */
+
+.piede { background: var(--inchiostro); color: var(--carta); padding-block: 2.75rem; }
+.piede__riga { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2.5rem; }
+.piede__link { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; list-style: none; margin: 0; padding: 0; }
+.piede__link a { text-decoration: none; }
+.piede__link a:hover { text-decoration: underline; text-underline-offset: .3em; }
+.piede__legale { margin-left: auto; color: #9fc9c1; font-size: .9375rem; }
+.piede :focus-visible { outline-color: var(--acqua); }
+[data-se][hidden] { display: none !important; }
+.a-capo { display: block; }
