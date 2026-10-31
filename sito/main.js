@@ -43,3 +43,22 @@ const apertura = document.querySelector(".apertura");
 new IntersectionObserver(([e]) => {
   testata.classList.toggle("is-staccata", !e.isIntersecting);
 }).observe(apertura);
+
+// Menu a tendina su mobile
+const pulsanteMenu = document.querySelector(".testata__menu");
+const chiudiMenu = () => {
+  testata.classList.remove("is-aperta");
+  pulsanteMenu.setAttribute("aria-expanded", "false");
+};
+pulsanteMenu.addEventListener("click", () => {
+  const aperto = testata.classList.toggle("is-aperta");
+  pulsanteMenu.setAttribute("aria-expanded", String(aperto));
+});
+document.querySelectorAll(".testata__nav a").forEach((a) => a.addEventListener("click", chiudiMenu));
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && testata.classList.contains("is-aperta")) {
+    chiudiMenu();
+    pulsanteMenu.focus();
+  }
+});
+matchMedia("(min-width: 721px)").addEventListener("change", (e) => e.matches && chiudiMenu());

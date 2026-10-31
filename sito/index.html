@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Odoardo Vitolo · Responsabile marketing esterno per studi e PMI</title>
-  <meta name="description" content="Faccio rendere il marketing che stai già pagando: priorità chiare, fornitori coordinati, risultati misurati. Prenota 30 minuti gratuiti.">
+  <meta name="description" content="Responsabile marketing esterno per studi sanitari e PMI: priorità chiare, fornitori coordinati, risultati misurati. Prenota 30 minuti gratuiti.">
   <meta property="og:title" content="Odoardo Vitolo · Responsabile marketing esterno">
-  <meta property="og:description" content="Probabilmente non ti serve più marketing. Ti serve una direzione.">
+  <meta property="og:description" content="Probabilmente non ti serve altro marketing. Ti serve una direzione.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/odoardo-ritratto-1100.webp">
   <meta name="theme-color" content="#46C2AF">
@@ -32,12 +32,18 @@
         <svg class="marchio__segno" aria-hidden="true"><use href="#anello"/></svg>
         <span>Odoardo Vitolo</span>
       </a>
-      <nav class="testata__nav" aria-label="Sezioni">
-        <a href="#metodo">Metodo</a>
+      <button class="testata__menu" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="testata__menu-icona" aria-hidden="true"></span>
+        <span class="testata__menu-testo">Menu</span>
+      </button>
+      <!-- Ordine voluto da Odoardo (revisione V1). "Quando" si aggiunge con la sua sezione. -->
+      <nav class="testata__nav" id="menu" aria-label="Sezioni">
+        <a href="#chi-sono">Chi</a>
+        <a href="#come">Come</a>
         <a href="#percorsi">Percorsi</a>
-        <a href="#chi-sono">Chi sono</a>
+        <a href="#perche">Perché</a>
       </nav>
-      <a class="btn btn--inchiostro btn--piccolo" data-link="calendario" href="#contatti">Prenota 30 minuti</a>
+      <a class="btn btn--inchiostro btn--piccolo testata__cta" data-link="calendario" href="#contatti">Prenota<span class="testata__cta-extra"> 30 minuti</span></a>
     </div>
   </header>
 
@@ -45,16 +51,11 @@
     <section class="apertura" id="top">
       <div class="wrap apertura__griglia">
         <div class="apertura__testo">
-          <h1>Probabilmente non ti serve più marketing. <span class="a-capo">Ti serve una direzione.</span></h1>
-          <p class="apertura__sotto">
-            Sono Odoardo Vitolo, responsabile marketing esterno per studi professionali e PMI.
-            Faccio rendere quello che spendi già.
-          </p>
+          <h1>Probabilmente non ti serve altro marketing. <span class="a-capo">Ti serve una direzione.</span></h1>
           <div class="azioni">
             <a class="btn btn--inchiostro" data-link="calendario" href="#contatti">Prenota 30 minuti gratuiti</a>
             <a class="link-forte" data-link="whatsapp" href="#contatti">Oppure scrivimi su WhatsApp</a>
           </div>
-          <p class="apertura__nota">Esci con le 3 priorità su cui intervenire, anche se non lavoriamo insieme.</p>
         </div>
 
         <figure class="ritratto" aria-label="Ritratto di Odoardo Vitolo">
@@ -72,14 +73,13 @@
       </div>
     </section>
 
-    <section class="sezione" aria-labelledby="quando-titolo">
+    <section class="sezione" id="perche" aria-labelledby="perche-titolo">
       <div class="wrap due-colonne">
         <div>
-          <h2 id="quando-titolo">Quando posso esserti utile</h2>
-          <p class="sezione__intro">Hai bisogno di direzione se ti riconosci in almeno una di queste situazioni.</p>
+          <h2 id="perche-titolo">Quando posso esserti utile</h2>
         </div>
         <ul class="segnali">
-          <li>Stai investendo nel marketing ma non sai cosa sta realmente funzionando.</li>
+          <li>Stai investendo nel marketing ma non sai se e cosa sta realmente funzionando.</li>
           <li>Agenzia, social, advertising e sito procedono senza una regia comune.</li>
           <li>Continui a dover coordinare personalmente fornitori e attività.</li>
           <li>Hai dati, CRM o report, ma non vengono trasformati in decisioni.</li>
@@ -88,9 +88,29 @@
       </div>
     </section>
 
-    <section class="fascia" id="metodo" aria-labelledby="metodo-titolo">
+    <section class="sezione" id="risultati" aria-labelledby="risultati-titolo">
       <div class="wrap">
-        <h2 id="metodo-titolo">Come lavoro: analisi, performance, risultati</h2>
+        <h2 id="risultati-titolo">Risultati ottenuti</h2>
+        <ul class="numeri">
+          <li class="numero">
+            <p class="numero__valore">25%</p>
+            <p class="numero__testo">Conversione dei lead: record storico del progetto, partendo dal 14%, in 4 mesi.</p>
+          </li>
+          <li class="numero">
+            <p class="numero__valore">+54%</p>
+            <p class="numero__testo">Tasso di chiusura di un contact center dopo 3 mesi di ottimizzazioni.</p>
+          </li>
+          <li class="numero">
+            <p class="numero__valore">+26%</p>
+            <p class="numero__testo">Margine di contribuzione sul progetto, su budget mensili da circa 200 mila euro di fatturato.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="fascia" id="come" aria-labelledby="come-titolo">
+      <div class="wrap">
+        <h2 id="come-titolo">Tre fasi</h2>
         <ol class="fasi">
           <li class="fase">
             <svg class="fase__segno" viewBox="0 0 1600 1600" aria-hidden="true">
@@ -98,8 +118,7 @@
               <path d="M 1100.91 400.68 A 500 500 0 0 1 1042.4 1237.3"/>
             </svg>
             <h3>Analisi</h3>
-            <p>Capisco cosa sta succedendo davvero: obiettivi, posizionamento, canali e numeri. Decidiamo dove andare e cosa viene prima.</p>
-            <p class="fase__ricevi"><span>Cosa ricevi</span> Business Scan e roadmap delle priorità</p>
+            <p>Risponde alla domanda: da dove partiamo e cosa sta succedendo davvero?</p>
           </li>
           <li class="fase">
             <svg class="fase__segno" viewBox="0 0 1600 1600" aria-hidden="true">
@@ -107,8 +126,7 @@
               <path d="M 1100.91 400.68 A 500 500 0 1 1 301.9 843.6"/>
             </svg>
             <h3>Performance</h3>
-            <p>Definisco priorità, responsabilità e attività misurabili. Azienda, agenzie e specialisti vanno nella stessa direzione.</p>
-            <p class="fase__ricevi"><span>Cosa ricevi</span> Brief operativi per ogni fornitore</p>
+            <p>Sulla base dei numeri, definiamo priorità, responsabilità e attività misurabili. Azienda, agenzie e specialisti vanno nella stessa direzione.</p>
           </li>
           <li class="fase">
             <svg class="fase__segno" viewBox="0 0 1600 1600" aria-hidden="true">
@@ -116,47 +134,23 @@
               <path d="M 1100.91 400.68 A 500 500 0 1 1 962.78 327.24"/>
             </svg>
             <h3>Risultati</h3>
-            <p>Collego il marketing agli indicatori che contano e misuro cosa produce risultati e cosa no.</p>
-            <p class="fase__ricevi"><span>Cosa ricevi</span> Un report mensile con le decisioni da prendere</p>
+            <p>Colleghiamo il marketing agli indicatori che contano e misuriamo cosa produce risultati e cosa no.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="sezione sezione--dichiarazione" aria-label="Con chi lavoro">
-      <div class="wrap">
-        <p class="dichiarazione">
-          Lavoro soprattutto con studi medici e odontoiatrici, e con PMI e professionisti
-          che investono già nel marketing ma non hanno chi lo guida.
-        </p>
-      </div>
-    </section>
-
     <section class="sezione" id="percorsi" aria-labelledby="percorsi-titolo">
       <div class="wrap">
-        <h2 id="percorsi-titolo">Due modi di lavorare insieme</h2>
+        <h2 id="percorsi-titolo">Due possibili percorsi</h2>
         <div class="percorsi">
           <article class="percorso">
             <h3>Direzione condivisa</h3>
-            <dl>
-              <dt>Per chi</dt>
-              <dd>Hai già agenzia o fornitori e vuoi che lavorino meglio.</dd>
-              <dt>Include</dt>
-              <dd>Business Scan, roadmap, coordinamento dei tuoi fornitori, report mensile.</dd>
-              <dt>Investimento</dt>
-              <dd>Su misura, lo definiamo dopo la prima call.</dd>
-            </dl>
+            <p>Per chi è in parte soddisfatto del proprio marketing ma vuole migliorarne le performance.</p>
           </article>
           <article class="percorso">
             <h3>Direzione completa</h3>
-            <dl>
-              <dt>Per chi</dt>
-              <dd>Parti da zero o vuoi cambiare chi lavora per te.</dd>
-              <dt>Include</dt>
-              <dd>Tutto il percorso condiviso, più la selezione e la gestione dei professionisti necessari. I costi dei fornitori sono esclusi.</dd>
-              <dt>Investimento</dt>
-              <dd>Su misura, lo definiamo dopo la prima call.</dd>
-            </dl>
+            <p>Per chi parte da zero e vuole costruire una funzione di marketing.</p>
           </article>
         </div>
         <p class="percorsi__chiusa">Non sai quale fa per te? <a class="link-forte" data-link="calendario" href="#contatti">Parliamone in una call di 30 minuti</a></p>
@@ -165,6 +159,7 @@
 
     <section class="sezione sezione--chi" id="chi-sono" aria-labelledby="chi-titolo">
       <div class="wrap chi">
+        <!-- Da sostituire con la foto all'evento IAB, quando arriva -->
         <img class="chi__foto"
              src="img/odoardo-ritratto-640.webp"
              srcset="img/odoardo-ritratto-640.webp 640w, img/odoardo-ritratto-1100.webp 1100w"
@@ -173,10 +168,9 @@
              alt="Odoardo Vitolo davanti a una parete chiara illuminata dalla luce di una finestra">
         <div class="chi__testo">
           <h2 id="chi-titolo">Chi sono</h2>
-          <p>Per sei anni ho guidato un team in un'agenzia di performance marketing, generando lead per aziende di settori molto diversi.</p>
-          <p>La curiosità per come nascono e crescono i progetti viene da prima: all'università ho scritto la tesi sulla viralità nel marketing e sui meccanismi che la fanno funzionare. In agenzia li ho visti sul campo, e ho sviluppato un approccio critico e guidato dai dati.</p>
-          <p>Lì ho imparato che il problema raramente è la mancanza di canali. È la mancanza di una regia.</p>
-          <p>Oggi entro nella tua attività come responsabile marketing esterno: fisso le priorità, coordino chi lavora per te e misuro cosa porta risultati.</p>
+          <p>All'università ho approfondito la viralità nel marketing, studiando i meccanismi che la fanno propagare.</p>
+          <p>Per sei anni ho guidato un team in un'agenzia di performance marketing, generando lead per aziende di settori molto diversi. Lì ho imparato che il problema raramente è la mancanza di canali. È la mancanza di una regia: tutti lavorano, ma pochi decidono guardando i numeri.</p>
+          <p>Quando le decisioni partono dai dati, i risultati cambiano. Oggi porto lo stesso approccio in diversi studi sanitari.</p>
           <a class="link-forte" data-link="linkedin" href="#chi-sono">Il mio profilo LinkedIn</a>
         </div>
       </div>
@@ -185,8 +179,8 @@
     <section class="fascia fascia--contatti" id="contatti" aria-labelledby="contatti-titolo">
       <svg class="contatti__anello" aria-hidden="true"><use href="#anello"/></svg>
       <div class="wrap contatti">
-        <h2 id="contatti-titolo">Parliamo del tuo marketing.</h2>
-        <p>Raccontami dove sei oggi, cosa state facendo e cosa non ti convince. In 30 minuti capiamo qual è il problema e se posso esserti utile.</p>
+        <h2 id="contatti-titolo">Ma adesso parliamo del tuo marketing.</h2>
+        <p>Raccontami dove sei oggi, cosa state facendo e cosa non ti convince. In 30 minuti capiamo se posso esserti utile.</p>
         <div class="azioni">
           <a class="btn btn--inchiostro" data-link="calendario" href="#contatti">Prenota 30 minuti gratuiti</a>
           <a class="btn btn--contorno" data-link="whatsapp" href="#contatti">Scrivimi su WhatsApp</a>
